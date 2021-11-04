@@ -24,6 +24,30 @@ return accumVariable + curValue[3]
 }}
         </li>
         </ul>
+        <br/>
+        <p>attempts per activity</p>
+        <vue-bar-graph
+  :points="attempts"
+  :width="400"
+  :height="200"
+  :show-y-axis="false"
+:show-x-axis="true"
+  :use-custom-labels="true"
+  :show-values="true"
+
+/>
+
+        <p>average time per activity</p>
+        <vue-bar-graph
+  :points="averageTimes"
+  :width="400"
+  :height="200"
+  :show-y-axis="false"
+:show-x-axis="true"
+  :use-custom-labels="true"
+  :show-values="true"
+
+/>
         
         </div>
             
@@ -34,8 +58,13 @@ return accumVariable + curValue[3]
 
 <script>
     import axios from 'axios'
+    import VueBarGraph from 'vue-bar-graph';
+
     export default {
         name: 'Login',
+        components: {
+    VueBarGraph,
+},
         data() {
             return {
                 input: {
@@ -43,7 +72,10 @@ return accumVariable + curValue[3]
                     password: ""
                 },
                 set:false,
-                vals:{}
+                vals:{},
+                names:[],
+                attempts:[],
+                averageTimes:[]
 
             }
         },
@@ -56,7 +88,6 @@ return accumVariable + curValue[3]
                             if(loggedIn)
                             {
                                 this.vals={}
-                                console.log(loggedIn)
                                 loggedIn.forEach(element => {
                                  if(this.vals[element[0]]===undefined)
                                  {
@@ -67,7 +98,18 @@ return accumVariable + curValue[3]
                                   this.vals[element[0]].push(element) ;  
                                  }
                                 });
-
+                                for (let key in this.vals) {
+                                    this.names.push(key)
+                                    var attempts=0;
+                                    var time=0;
+                                    this.vals[key].forEach(element =>{
+                                        attempts++;
+                                        time+=element[3]
+                                    })
+                                    this.attempts.push({label: key, value: attempts});
+                                    this.averageTimes.push({label: key, value: time/attempts})
+  
+                                }
                                 this.set=true
                                 this.$emit("authenticated", true);
                             }
