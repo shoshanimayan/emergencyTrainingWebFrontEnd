@@ -1,6 +1,6 @@
 emergencyTrainingWebFrontEnd
 
-this is the front web front end for the [VR emergency training project](https://github.com/shoshanimayan/VR-Emergency-Training) built in Vue.js, and is used to view the data collected on a users training experience i nthe forms of graphs through a browser
+this is the web front end for the [VR emergency training project](https://github.com/shoshanimayan/VR-Emergency-Training) built in Vue.js, and is used to view the data collected on a users training experience i nthe forms of graphs through a browser
 
 to run this application you will need:
 
