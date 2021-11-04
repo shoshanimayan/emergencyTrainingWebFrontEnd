@@ -4,7 +4,7 @@ this is the front web front end for the [VR emergency training project](https://
 
 to run this application you will need:
 
-to set up [vue.js](https://vuejs.org/v2/guide/installation.html) in your environment\ 
+to set up [vue.js](https://vuejs.org/v2/guide/installation.html) in your environment<br/> 
 run the [backend api locally](https://github.com/shoshanimayan/EmergencyTrainingBackend)\
 have created an account and done some training exercises within the VR app\
 then run run the vue application
